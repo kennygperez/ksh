@@ -22,6 +22,12 @@ kshell() {
 		KSH_CWD_CONTEXT="$KSH_CWD_CONTEXT $KSH_NPM_TOKEN $KSH_NODE_TOKEN"
 	fi
 
+	if [ -f "yarn.lock" ]; then
+		KSH_YARN_TOKEN="%B%F{blue}yarn%f%b: $(yarn --version)"
+
+		KSH_CWD_CONTEXT="$KSH_CWD_CONTEXT $KSH_YARN_TOKEN"
+	fi
+
 	if [ ! -z "$KSH_CWD_CONTEXT" ]; then
 		KSH_PROMPT="$KSH_PROMPT$NEWLINE 💡$KSH_CWD_CONTEXT"
 	fi
